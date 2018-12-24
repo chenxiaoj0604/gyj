@@ -1,0 +1,35 @@
+spring:
+  datasource:
+     type: com.alibaba.druid.pool.DruidDataSource
+     url: jdbc:oracle:thin:@192.168.3.241:1521:orcl
+     username: dw_gyj
+     password: dw_gyj
+     driver-class-name: oracle.jdbc.OracleDriver
+     initialSize: 1
+     minIdle: 5
+     maxActive: 30
+     maxWait: 60000
+     timeBetweenEvictionRunsMillis: 60000
+     minEvictableIdleTimeMillis: 30000
+     validationQuery: SELECT 1 FROM DUAL
+     testWhileIdle: true
+     testOnBorrow: false
+     testOnReturn: false
+     poolPreparedStatements: true
+     maxPoolPreparedStatementPerConnectionSize: 20
+     filters: stat,wall,slf4j
+     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mybatis/*Mapper.xml
+  typeAliasesPackage: com.gyj.domain
+
+webServiceUrl:
+  DrugPriceTraceWSUrl: http://192.168.100.87/nmmps/ws/drugPriceTraceWService?wsdl
+  MaterialPriceTraceWSUrl: http://192.168.100.87/nmmps/ws/materialPriceTraceWService?wsdl
+  ServicePriceTraceWSUrl: http://192.168.100.87/nmmps/ws/servicePriceTraceWService?wsdl
+  HospitalResourceWSUrl: http://192.168.100.87/nmmps/ws/hospitalResourceWService?wsdl
+  MedicalTempWSUrl: http://192.168.100.87/nmmps/ws/medicalTempWService?wsdl

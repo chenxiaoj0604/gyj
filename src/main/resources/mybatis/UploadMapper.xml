@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gyj.dao.UploadDao">
+
+    <select id="getDrugPriceTraceVo" resultType="DrugPriceTraceVo">
+        SELECT
+        ORGCODE orgCode,
+        HOSPNAME hospName,
+        SUBMITTOTALNUM submitTotalNum,
+        DATASTARTDATE dataStartDate,
+        DATAENDDATE dataEndDate
+        FROM V_GYJYP02
+    </select>
+
+    <select id="getDrugPriceInfosByDate" resultType="DrugPriceInfo">
+        SELECT
+        YPID ypid,
+        DRUGID drugId,
+        DRUGCODE drugCode,
+        CADNTYPE cadnType,
+        DRUGNAME drugName,
+        BRAND brand,
+        APPROVALNUM approvalNum,
+        ISHOSMAKE isHosMake,
+        DRUGFORM drugForm,
+        FORMID formId,
+        DRUGSPEC drugSpec,
+        SPECCODE specCode,
+        SMAKEUNIT sMakeUnit,
+        DRUGUNIT drugUnit,
+        DRUGFACOTR drugFacotr,
+        FACTORYNAME factoryName,
+        BUYPRICE buyPrice,
+        ONEBUYPRICE oneBuyPrice,
+        BUYNUM buyNum,
+        ONEBUYNUM oneBuyNum,
+        SELLPRICE sellPrice,
+        ONESELLPRICE oneSellPrice,
+        SELLNUM sellNum,
+        ONESELLNUM oneSellNum,
+        SEQNUMBER seqNumber
+        FROM V_GYJYP01
+        <where>
+            DATASTARTDATE = #{dataStartDate}
+            AND DATAENDDATE = #{dataEndDate}
+        </where>
+    </select>
+
+    <select id="getMaterialPriceTraceVo" resultType="MaterialPriceTraceVo">
+        SELECT
+        ORGCODE orgCode,
+        HOSPNAME hospName,
+        SUBMITTOTALNUM submitTotalNum,
+        DATASTARTDATE dataStartDate,
+        DATAENDDATE dataEndDate
+        FROM V_GYJGZHC02
+    </select>
+
+    <select id="getMaterialPriceInfosByDate" resultType="MaterialPriceInfo">
+        SELECT
+        HCBS hcbs,
+        SJHCBS sjhcbs,
+        YNHCBS ynhcbs,
+        MATERIALNAME materialName,
+        BRAND brand,
+        REGCARDNAME regcardName,
+        REGCARDNM regcardNm,
+        PRODUCTTYPE producttype,
+        PRODUCTOUTLOOKC prodouctoutlookc,
+        PRODUCTMINPUNIT productminpunit,
+        PRODUCTUNIT productunit,
+        PRODUCTMFACTOR productmfactor,
+        FACTORYNAME factoryName,
+        BUYPRICE buyPrice,
+        PRODUCTMINPUNITBUYPRICE productminpunitBuyPrice,
+        BUYNUM buyNum,
+        PRODUCTMINPUNITBUYNUM productminpunitBuyNum,
+        SELLPRICE sellPrice,
+        PRODUCTMINPUNITSELLPRICE productminpunitSellPrice,
+        SELLNUM sellNum,
+        PRODUCTMINPUNITSELLNUM productminpunitSellNum,
+        SEQNUMBER seqNumber
+        FROM V_GYJGZHC01
+        <where>
+            DATASTARTDATE = #{dataStartDate}
+            AND DATAENDDATE = #{dataEndDate}
+        </where>
+    </select>
+
+    <select id="getServicePriceTraceVo" resultType="ServicePriceTraceVo">
+        SELECT
+        ORGCODE orgCode,
+        HOSPNAME hospName,
+        SUBMITTOTALNUM submitTotalNum,
+        DATASTARTDATE dataStartDate,
+        DATAENDDATE dataEndDate
+        FROM V_GYJYL02
+    </select>
+
+    <select id="getServicePriceInfosByDate" resultType="ServicePriceInfo">
+        SELECT
+        BAVER baVer,
+        BAVERNAME baVerName,
+        BASECODE baseCode,
+        BASENAME baseName,
+        BAYJCODE baYjCode,
+        BAYJNAME baYjName,
+        SERVICECODE serviceCode,
+        SERVICENAME serviceName,
+        ISBASE isBase,
+        UNIT unit,
+        SELLPRICE sellPrice,
+        SELLNUM sellNum,
+        PRICEEXPLAIN priceExplain,
+        SEQNUMBER seqNumber
+        FROM V_GYJYL01
+        <where>
+            DATESTART = #{dataStartDate}
+        </where>
+    </select>
+
+    <select id="getHospitalResource" resultType="HospitalResourceVo">
+        SELECT
+        ORGCODE orgCode,
+        HOSPNAME hospName,
+        DATASTARTDATE dataStartDate,
+        DATAENDDATE dataEndDate,
+        BEDSNUM bedsNum,
+        DOCTORSNUM doctorsNum,
+        DIAGNOSESNUM diagnosesNum,
+        LEAVENUM leaveNum,
+        DRUGPLUS drugPlus,
+        DRUGPLUSDATE drugPlusDate,
+        DRINKBUYMONEY drinkBuyMoney,
+        DRINKSELLMONEY drinkSellMoney,
+        GRAINBUYMONEY grainBuyMoney,
+        GRAINSELLMONEY grainSellMoney,
+        SUPPLIBUYMONEY SuppliBuyMoney,
+        SUPPLISELLMONEY suppliSellMoney
+        FROM V_GYJYLZY
+    </select>
+</mapper>
